@@ -1,0 +1,26 @@
+
+body{
+    background-color: fuchsia;
+}
+
+div{
+    text-align: center;
+}
+p{
+    font-family: 'Times New Roman', Times, serif;
+    font-size:40px;
+    font-weight: bold;
+    color: white;
+}
+
+img{
+    border-style: solid;
+    border-width: medium;
+    border-color: black;
+}
+
+p{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 40px;
+    color: white;
+}
