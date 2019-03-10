@@ -78,11 +78,31 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'quack',
-        'USER': 'root',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'portfoliodb',
+        'USER': 'postgres',
+        'PASSWORD': '1234',
         'HOST': 'localhost',
-        'PASSWORD': 'S0ftw2re123',
+        'PORT': '5432'
+    }
+
+    # {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'quack',
+    #     'USER': 'root',
+    #     'HOST': 'localhost',
+    #     'PASSWORD': 'S0ftw2re123',
+    # }
+}
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'portfoliodb',
+        'USER': 'postgres',
+        'PASSWORD': '1234',
+        'HOST': 'localhost',
+        'PORT': '5432'
     }
 }
 
