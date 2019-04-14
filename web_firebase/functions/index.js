@@ -1,12 +1,13 @@
+// Cloud Functions: https://firebase.google.com/docs/functions/write-firebase-functions
+
 const functions = require('firebase-functions');
+const path = require("path");
 const express = require('express');
 const app = express();
 
 const hbs = require("express-handlebars");
 
-// const static = express.static(__dirname + "/public");
-// app.use("/public", static);
-
+app.use(express.static(path.join(__dirname, '/public')));
 app.set('views', __dirname + '/views');
 app.engine("handlebars", hbs({
     defaultLayout: "main"
@@ -14,20 +15,14 @@ app.engine("handlebars", hbs({
 app.set("view engine", "handlebars");
 
 
-
-
-
-
+// Route and API functions below
 
 app.get('/', (request, response) => {
-    response.render('index', {
+    response.render('login', {
         item: {
             name: "raymond"
         }
     })
 })
-
-// Create and Deploy Your First Cloud Functions
-// https://firebase.google.com/docs/functions/write-firebase-functions
 
 exports.app = functions.https.onRequest(app);

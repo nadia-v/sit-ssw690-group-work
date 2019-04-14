@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "static_assets",
+    "public": "public",
     "rewrites": [{
       "source": "/",
       "function": "app"
