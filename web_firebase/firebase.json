@@ -1,15 +1,15 @@
 {
   "hosting": {
-    "public": "public",
+    "public": "static_assets",
+    "rewrites": [{
+      "source": "/",
+      "function": "app"
+    }],
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ],
-    "rewrites": [{
-      "source": "/",
-      "function": "app"
-    }]
+    ]
   },
   "functions": {
     "predeploy": [
