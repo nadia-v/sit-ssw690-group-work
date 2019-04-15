@@ -2,9 +2,21 @@
   "hosting": {
     "public": "public",
     "rewrites": [{
-      "source": "/",
-      "function": "app"
-    }],
+        "source": "/",
+        "destination": "start.html"
+      },
+
+      {
+        "source": "/main",
+        "destination": "dashboard.html"
+      },
+
+      {
+        "source": "/app",
+        "function": "app"
+      }
+
+    ],
     "ignore": [
       "firebase.json",
       "**/.*",
