@@ -10,10 +10,10 @@
     <!-- update the version number as needed -->
     <script defer src="/__/firebase/5.9.3/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/5.9.3/firebase-auth.js"></script>
-    <script defer src="/__/firebase/5.9.3/firebase-database.js"></script>
-    <script defer src="/__/firebase/5.9.3/firebase-messaging.js"></script>
-    <script defer src="/__/firebase/5.9.3/firebase-storage.js"></script>
+    <!-- <script defer src="/__/firebase/5.9.3/firebase-auth.js"></script> -->
+    <!-- <script defer src="/__/firebase/5.9.3/firebase-database.js"></script> -->
+    <!-- <script defer src="/__/firebase/5.9.3/firebase-messaging.js"></script> -->
+    <!-- <script defer src="/__/firebase/5.9.3/firebase-storage.js"></script> -->
     <script defer src="/__/firebase/5.9.3/firebase-firestore.js"></script>
     <!-- Bootstrap core CSS -->
     <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -22,7 +22,7 @@
     <link href="static/css/simple-sidebar.css" rel="stylesheet">
 
     <!-- initialize the SDK after all desired features are loaded -->
-    <script defer src="/__/firebase/init.js"></script>
+    <!-- <script defer src="/__/firebase/init.js"></script> -->
   </head>
 
 
@@ -32,7 +32,9 @@
   
   <body>
   
-  <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+  
+  <!-- <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase-app.js"></script> -->
+  <!-- <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase-database.js"></script> -->
  
   
     <div class="d-flex" id="wrapper">
@@ -52,20 +54,7 @@
       <!-- /#sidebar-wrapper -->
 
 
-      <script>
-      // Initialize Firebase
-      var config = {
-        apiKey: "AIzaSyDb9Ez0_utcuIrj8LZz4iyufABSSbpiaGw",
-        authDomain: "quack-f1544.firebaseapp.com",
-        databaseURL: "https://quack-f1544.firebaseio.com",
-        projectId: "quack-f1544",
-        storageBucket: "quack-f1544.appspot.com",
-        messagingSenderId: "740005547099"
-      };
-      firebase.initializeApp(config);
-      const db = firebase.firestore();
       
-    </script>
 
 
   
@@ -112,38 +101,13 @@
         </nav>
   
         
-          
-        <div class="container-fluid">
-          <h1 class="mt-4">Latest Posts</h1>
-        </div>
-  
-          <!-- Blog Post -->
-          <div class="card mb-4">
-            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-            <div class="card-body">
-              <h2 class="card-title">Post Title</h2>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-              <a href="#" class="btn btn-primary">Read More &rarr;</a>
-            </div>
-            <div class="card-footer text-muted">
-              Posted on January 1, 2017 by
-              <a href="#">Start Bootstrap</a>
-            </div>
-  
-            <!-- Blog Post -->
-          <div class="card mb-4">
-            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-            <div class="card-body">
-              <h2 class="card-title">Post Title</h2>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-              <a href="#" class="btn btn-primary">Read More &rarr;</a>
-            </div>
-            <div class="card-footer text-muted">
-              Posted on January 1, 2017 by
-              <a href="#">Start Bootstrap</a>
-            </div>
-          </div>
-  
+        <h1>MARKETPLACE</h1>
+
+        <pre id="object"></pre>
+
+
+
+
           <!-- Blog Post -->
           <div class="card mb-4">
             <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
@@ -157,7 +121,12 @@
               <a href="#">Start Bootstrap</a>
             </div>
           </div>
-          <input onchange="updatePost(event)">
+          <!----<input onchange="updatePost(event)"> -->
+          <form method="POST" onSubmit="updatePost">
+            <label for="personName">Person Name</label>
+            <input type="text" name="personName" id="personName" placeholder="Please enter a name here">
+            <button type="submit">Submit</button>
+          </form>
          
               <!-- Pagination -->
               <ul class="pagination justify-content-center mb-4">
@@ -189,12 +158,7 @@
     <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   
     <!-- Menu Toggle Script -->
-    <script>
-      $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-      });
-    </script>
+
 
   
 
@@ -204,8 +168,21 @@
     
 
      
-
-    <script src="app.js">
+    <script defer>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyDb9Ez0_utcuIrj8LZz4iyufABSSbpiaGw",
+            authDomain: "quack-f1544.firebaseapp.com",
+            databaseURL: "https://quack-f1544.firebaseio.com",
+            projectId: "quack-f1544",
+            storageBucket: "quack-f1544.appspot.com",
+            messagingSenderId: "740005547099"
+        };
+        console.log("passed config varirable");
+        firebase.initializeApp(config);
+        console.log("passed the line of config");
+    </script>
+    <script defer src="marketplace.js">
     </script>
 
     <!-- <button onclick="googleLogin()">

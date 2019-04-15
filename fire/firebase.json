@@ -21,9 +21,14 @@
     ],
     "rewrites": [
       {
-        "source": "**",
-        "destination": "/index.html"
+        "source": "/",
+        "destination": "marketplace.html"
+      },
+      {
+        "source": "/bigben",
+        "function": "bigben"
       }
+  
     ]
   },
   "storage": {
