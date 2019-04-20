@@ -3,12 +3,12 @@
     "public": "public",
     "rewrites": [{
         "source": "/",
-        "destination": "start.html"
+        "destination": "first_page.html"
       },
 
       {
         "source": "/main",
-        "destination": "dashboard.html"
+        "destination": "second_page.html"
       },
 
       {

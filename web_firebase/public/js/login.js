@@ -159,14 +159,17 @@ function initApp() {
     document.getElementById('quickstart-sign-up').addEventListener('click', handleSignUp, false);
     document.getElementById('quickstart-verify-email').addEventListener('click', sendEmailVerification, false);
     document.getElementById('quickstart-password-reset').addEventListener('click', sendPasswordReset, false);
-    if (firebase.auth().currentUser) {
-        console.log('outside if');
-        console.log(firebase.auth().currentUser);
 
-        console.log("entered!");
+    var user = firebase.auth().currentUser;
+    window.alert(JSON.stringify(user));
+    if (user != null) {
+
     }
 }
 
 window.onload = function () {
+    window.alert("login.js loading");
     initApp();
 };
+
+window.alert("login.js loading");
