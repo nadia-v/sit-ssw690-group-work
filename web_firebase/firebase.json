@@ -7,7 +7,7 @@
       },
 
       {
-        "source": "/main",
+        "source": "/dashboard",
         "destination": "second_page.html"
       },
 
