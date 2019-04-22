@@ -10,3 +10,7 @@ def section(request, service_id):
     service_section = get_object_or_404(Home, pk=service_id)
     return render(request, 'homes/section.html', {'service': service_section})
 
+def dashboard(request):
+    # service_section = get_object_or_404(Home, pk=service_id)
+    return render(request, 'homes/index.html',)
+
