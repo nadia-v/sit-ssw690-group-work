@@ -3,7 +3,7 @@
     "public": "public",
     "rewrites": [{
         "source": "/",
-        "destination": "first_page.html"
+        "destination": "starter_page.html"
       },
 
       {
