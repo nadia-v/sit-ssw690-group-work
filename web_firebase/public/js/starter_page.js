@@ -8,11 +8,8 @@ firebase.auth().onAuthStateChanged(function (user) {
         var user = firebase.auth().currentUser;
 
         if (user != null) {
-            var email_id = user.email;
-
-            document.getElementById("user_para").innerHTML = "Welcome user " + email_id;
             setTimeout(function () {
-                window.location = '/main';
+                window.location = '/dashboard';
             }, 3000);
         }
     } else {

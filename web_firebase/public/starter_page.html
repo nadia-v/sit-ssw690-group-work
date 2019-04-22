@@ -39,28 +39,30 @@
                             <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
                             <div class="col-lg-6">
                                 <div class="p-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome to QuAck!</h1>
-                                    </div>
-
-                                    <div id="user_div" class="loggedin-dev">
-                                        <h4>Welcome User</h4>
-                                        <p id="user_para">Welcome. You're currently logged in.</p>
+                                    <div class="text-center" id="user_div">
+                                        <h1 class="h4 text-gray-900 mb-4">Welcome back!</h1>
+                                        <p id="user_para">You're currently logged in. Redirecting in 3 sec...</p>
                                         <button onclick="logout()">Logout</button>
                                     </div>
 
-                                    <form class="user">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control form-control-user" id="email_field"
-                                                aria-describedby="emailHelp" placeholder="Enter Email Address...">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
-                                                id="password_field" placeholder="Password...">
+                                    <div id="login_div">
+                                        <div class="text-center">
+                                            <h1 class="h4 text-gray-900 mb-4">Welcome to QuAck!</h1>
                                         </div>
 
-                                        <!-- remember me check button -->
-                                        <!-- <div class="form-group">
+                                        <form class="user">
+                                            <div class="form-group">
+                                                <input type="email" class="form-control form-control-user"
+                                                    id="email_field" aria-describedby="emailHelp"
+                                                    placeholder="Enter Email Address...">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" class="form-control form-control-user"
+                                                    id="password_field" placeholder="Password...">
+                                            </div>
+
+                                            <!-- remember me check button -->
+                                            <!-- <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
                                                 <label class="custom-control-label" for="customCheck">Remember
@@ -68,24 +70,25 @@
                                             </div>
                                         </div> -->
 
-                                        <div class="btn btn-primary btn-user btn-block" onclick="login()">Login</div>
+                                            <div class="btn btn-primary btn-user btn-block" onclick="login()">Login
+                                            </div>
 
-                                        <!-- third party login -->
-                                        <!-- <hr>
+                                            <!-- third party login -->
+                                            <!-- <hr>
                                         <a href="index.html" class="btn btn-google btn-user btn-block">
                                             <i class="fab fa-google fa-fw"></i> Login with Google
                                         </a>
                                         <a href="index.html" class="btn btn-facebook btn-user btn-block">
                                             <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
                                         </a> -->
-                                    </form>
-                                    <hr>
+                                        </form>
+                                        <hr>
 
-                                    <!-- TODO: create account -->
-                                    <div class="text-center">
-                                        <a class="small" href="register.html">Create an Account!</a>
+                                        <!-- TODO: create account -->
+                                        <div class="text-center">
+                                            <a class="small" href="register.html">Create an Account!</a>
+                                        </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
