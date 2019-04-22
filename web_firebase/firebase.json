@@ -8,7 +8,7 @@
 
       {
         "source": "/dashboard",
-        "destination": "second_page.html"
+        "destination": "dashboard.html"
       },
 
       {
