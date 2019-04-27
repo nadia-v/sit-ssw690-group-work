@@ -16,6 +16,7 @@ function initApp() {
             console.log(JSON.stringify(user));
 
             var userEmail = user.email;
+            var userId = user.uid;
             document.getElementById("user_display").innerHTML = userEmail;
 
             var marketplace_posts = document.getElementById("marketplace_posts");
@@ -91,7 +92,8 @@ function initApp() {
                             adCategory: marketplace_form.category.value,
                             adStatus: "active",
                             adDate: date,
-                            idUser: "fkFTTR55iyakzpy8FlD8BXUGkuF3",
+                            idUser: userId,
+                            // emailUser: userEmail,
                             imageOne: url,
                             imageTwo: '',
                             imageThree: '',
