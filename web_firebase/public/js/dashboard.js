@@ -62,7 +62,9 @@ function initApp() {
 
 
             const marketplace_form = document.querySelector('#add_marketplace');
-            var selectedFile;
+            // var selectedFile;
+            var time = new Date();
+            var date = time.getTime();
 
             // saving data for marketplace
             marketplace_form.addEventListener('submit', (e) => {
@@ -70,11 +72,11 @@ function initApp() {
 
                 const ref = firebase.storage().ref();
                 //Select the file
-                const file = document.querySelector('#picture').files[0];
+                const file = document.querySelector('#marketplace_picture').files[0];
                 //Set file name
                 const name = file.name;
                 //Create the task
-                const task = ref.child("/Marketplace/" + name).put(file);
+                const task = ref.child("/marketplace_posts/" + name).put(file);
                 //Put the pic to firebase 
                 task
                     .then(snapshort => snapshort.ref.getDownloadURL())
@@ -82,16 +84,17 @@ function initApp() {
                         console.log(url);
 
                         db.collection('marketplace_posts').add({
-                            adCategory: marketplace_form.adCategory.value,
-                            adDate: firebase.firestore.FieldValue.serverTimestamp(),
-                            adDescription: marketplace_form.adDescription.value,
-                            adPrice: marketplace_form.adPrice.value,
-                            adStatus: marketplace_form.adStatus.value,
-                            adTitle: marketplace_form.adTitle.value,
-                            editDate: firebase.firestore.FieldValue.serverTimestamp(),
-                            idAd: marketplace_form.idAd.value,
-                            idUser: marketplace_form.idUser.value,
+                            adTitle: marketplace_form.title.value,
+                            adDescription: marketplace_form.description.value,
+                            adPrice: marketplace_form.price.value,
                             imageOne: url,
+                            adCategory: marketplace_form.category.value,
+                            adStatus: "active",
+                            adDate: date,
+                            idUser: "fkFTTR55iyakzpy8FlD8BXUGkuF3",
+                            imageOne: url,
+                            imageTwo: '',
+                            imageThree: '',
 
 
 
