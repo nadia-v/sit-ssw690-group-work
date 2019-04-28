@@ -27,10 +27,12 @@ firebase.auth().onAuthStateChanged(function (user) {
             // create display name for new user
             var firstName = document.getElementById("FirstName").value;
             var lastName = document.getElementById("LastName").value;
-            if (firstName !== null) {
-                var displayName = firstName + " " + lastName;
+            var displayName;
+            if (firstName === undefined || firstName === "") {
+                displayName = lastName;
+            } else {
+                displayName = firstName + " " + lastName;
             }
-            var displayName = lastName;
             user.updateProfile({
                 displayName: displayName
             }).then(function () {
@@ -41,6 +43,7 @@ firebase.auth().onAuthStateChanged(function (user) {
             }).catch(function (error) {
                 // An error happened.
             });
+            justRegistered = false;
         }
 
         if (user != null) {
@@ -72,6 +75,7 @@ function login() {
 function logout() {
     firebase.auth().signOut().then(function () {
         // Sign-out successful.
+        window.location = '/';
     }).catch(function (error) {
         // An error happened.
     });

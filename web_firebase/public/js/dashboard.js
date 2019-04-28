@@ -17,7 +17,13 @@ function initApp() {
 
             var userEmail = user.email;
             var userId = user.uid;
-            document.getElementById("user_display").innerHTML = userEmail;
+            var displayName = user.displayName;
+            if (displayName === "" || displayName == undefined) {
+                document.getElementById("user_display").innerHTML = userEmail;
+            } else {
+                document.getElementById("user_display").innerHTML = displayName;
+            }
+
 
             var marketplace_posts = document.getElementById("marketplace_posts");
 
