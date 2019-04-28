@@ -366,8 +366,8 @@
 
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="#"
-                id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Write
-                a Post</a>
+                id="postDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Write
+                a New Post</a>
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -397,39 +397,37 @@
             
             <!-- Modal content-->
             <div class="modal-content">
-                  <form id="add_marketplace"> 
+                  <form class="form-horizontal" id="add_marketplace" role="form"> 
                       <h1>Marketplace New Post</h1>
                   
-                  <div class="form-group row">
+                  <div class="form-group">
                   <label for="title" class="col-sm-3 control-label">Title</label>
                       <div class="col-sm-9">
                           <input type="text" class="form-control" id="title" placeholder="Title">
                       </div>
-                  </div>
-            
-                  <div class="form-group row">
+                  
+
                   <label for="description" class="col-sm-3 control-label">Description</label>
-                      <div class="col-sm-9">
+                      <div class="col-md-9">
                           <input type="text" class="form-control" id="description" placeholder="Description">
                       </div>
-                  </div>
+                  
             
-                  <div class="form-group row">
+
                   <label for="price" class="col-sm-3 control-label">Price</label>
                       <div class="col-sm-9">
                           <input type="number" class="form-control" id="price" placeholder="Price">
                       </div>
-                  </div>
+                    
             
-                  <div class="form-group row">
+
                   <label for="picture" class="col-sm-3 control-label">Picture</label>
-                      <div class="col-sm-9">
+                      <div class="col-sm-3">
                           <input type="file" class="form-control" id="marketplace_picture" placeholder="Picture">
                       </div>
-                  </div>
-            
-                  <div class="from-group row">
-                    <select name="category">
+                  
+                  <label for="category" class="col-sm-3 control-label">Category</label>
+                    <select name="category" >
                       <option value="Books">Books</option>
                       <option value="Furnitures">Furnitures</option>
                       <option value="Electronics">Electronics</option>
@@ -437,15 +435,17 @@
                     </select>
                   </div>
             
-                      <button>Add</button>
+                      
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </form>   
+                <button>Submit</button>
+              <button data-dismiss="modal">Close</button>
+              
             </div>
+          </form> 
+            </div>
+          </div>
             </div>
             
-            </div>
-            </div>
               
             
             
@@ -458,50 +458,52 @@
                       <form id="add_housing"> 
                               <h1>Housing New Post</h1>
                       
-                      <div class="form-group row">
+                      <div class="form-group">
                       <label for="title" class="col-sm-3 control-label">Title</label>
                           <div class="col-sm-9">
                               <input type="text" class="form-control" id="title" placeholder="Title">
                           </div>
-                      </div>
+                      
             
-                      <div class="form-group row">
+                      
                       <label for="description" class="col-sm-3 control-label">Description</label>
                           <div class="col-sm-9">
                               <input type="text" class="form-control" id="description" placeholder="Description">
                           </div>
-                      </div>
+                      
             
-                      <div class="form-group row">
+                      
                       <label for="rent" class="col-sm-3 control-label">Rent</label>
                           <div class="col-sm-9">
                               <input type="number" class="form-control" id="rent" placeholder="Monthly Rent">
                           </div>
-                      </div>
+                      
             
-                      <div class="form-group row">
+                      
                       <label for="picture" class="col-sm-3 control-label">Picture</label>
                           <div class="col-sm-9">
                               <input type="file" class="form-control" id="housing_picture" placeholder="Picture">
                           </div>
-                      </div>
+                      
             
-                      <div class="from-group row">
+                        <label for="category" class="col-sm-3 control-label">Category</label>
                         <select name="category">
                           <option value="Need a room">I NEED a room</option>
                           <option value="Have spare room">I HAVE a room</option>
                         </select>
                       </div>
             
-                          <button>Add</button>
+                          
               <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button>Submit</button>
+                  <button data-dismiss="modal">Close</button>
+              </div>
               </form> 
               </div>
               </div>
             
               </div>
-            </div>
+            
             
             
             
@@ -514,51 +516,54 @@
                       <form id="add_social"> 
                               <h1>Social New Post</h1>
                       
-                      <div class="form-group row">
+                      <div class="form-group">
                       <label for="title" class="col-sm-3 control-label">Title</label>
                           <div class="col-sm-9">
                               <input type="text" class="form-control" id="title" placeholder="Title">
                           </div>
-                      </div>
+                      
             
-                      <div class="form-group row">
+                      
                       <label for="description" class="col-sm-3 control-label">Description</label>
                           <div class="col-sm-9">
                               <input type="text" class="form-control" id="description" placeholder="Description">
                           </div>
-                      </div>
+                      
             
-                      <div class="form-group row">
-                        <label for="date" class="col-sm-3 control-label">Event Date</label>
-                            <div class="col-sm-9">
-                                <input type="datetime-local" class="form-control" id="datetime" placeholder="Event Date and Time">
-                            </div>
-                        </div>
+                      
+                      <label for="date" class="col-sm-3 control-label">Event Date and Time</label>
+                          <div class="col-sm-9">
+                              <input type="datetime-local" class="form-control" id="datetime" placeholder="Event Date and Time">
+                          </div>
+                        
             
-                      <div class="form-group row">
+                      
                       <label for="picture" class="col-sm-3 control-label">Picture</label>
                           <div class="col-sm-9">
                               <input type="file" class="form-control" id="social_picture" placeholder="Picture">
                           </div>
-                      </div>
+                      
             
-                      <div class="from-group row">
+                        <label for="category" class="col-sm-3 control-label">Category</label>
                         <select name="category">
                           <option value="Social meet up">Social Meet Up</option>
                           <option value="Sport">Sporting Events</option>
                           <option value="Movie/Theater">Movie/Theater Evenst</option>
                         </select>
+                        
                       </div>
             
-                          <button>Add</button>
+                          
               <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button>Submit</button>
+                  <button data-dismiss="modal">Close</button>
+              </div>
               </form> 
               </div>
               </div>
               
               </div>
-            </div>
+            
 
 
           <!-- Content Row -->
