@@ -1,11 +1,11 @@
-// function logout() {
-//     firebase.auth().signOut().then(function () {
-//         // Sign-out successful.
-//         window.location = '/';
-//     }).catch(function (error) {
-//         // An error happened.
-//     });
-// };
+function logout() {
+    firebase.auth().signOut().then(function () {
+        // Sign-out successful.
+        window.location = '/';
+    }).catch(function (error) {
+        // An error happened.
+    });
+};
 
 function initApp() {
 
