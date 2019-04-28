@@ -17,7 +17,7 @@
 // })
 
 db.collection("marketplace_posts")
-    .orderBy("adDate", "desc")
+    .orderBy("editDate", "desc")
     .get().then(snapshot => {
 
         snapshot.forEach(doc => {
@@ -26,7 +26,7 @@ db.collection("marketplace_posts")
         var storageRef = firebase.storage().refFromURL(doc.data().imageOne);
         storageRef.getDownloadURL().then(function(url) {  
             //document.getElementById("marketplace-post-image").src = url
-
+            
             marketplace_posts.innerHTML += "<div class=card mb-4>";
             marketplace_posts.innerHTML += '<img class="card-img-top" id="marketplace-post-image" src=' + url + 'alt="Card image cap" style="width:500px">'; 
             marketplace_posts.innerHTML +='<div class="card-body>';
@@ -46,31 +46,6 @@ db.collection("marketplace_posts")
         })
     
 })
-
-
-// db.collection("marketplace_posts")
-//     .orderBy("editDate", "desc")
-//     .get().then('value', function(snapshot){
-//         if(snapshot.exists()){
-//             var content = '';
-//             snapshot.forEach(function(data){
-//                 const storageRef = firebase.storage().refFromURL(doc.data().imageOne);
-//                     storageRef.getDownloadURL().then(function(url) {       
-//                     document.getElementById("marketplace-post-image1").src = url; 
-//                 var val = data.val();
-//                 content += '<div class="card shadow mb-4"></div>';
-//                 content += '<h2>' + val.adCategory +'</h2>'; 
-//                 content += '<h2>' + val.adDate +'</h2>';   
-//                 content += '<h2>' + val.adDescription +'</h2>';   
-//                 content += '<h2>' + val.adPrice +'</h2>';   
-//                 content += '<h2>' + val.adStatus +'</h2>';   
-//                 content += '<h2>' + val.adTitle +'</h2>'; 
-//             });
-//             $('#marketplace_posts').append(content);
-//         })
-//     }   
-//     })
-
 
 
 //------------------------------------------------------------------------//
