@@ -1,0 +1,79 @@
+
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>Portfolio</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
+
+    <!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css" >
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <main role="main">
+
+      <section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">Sherman Xu</h1>
+          <p class="lead text-muted">I am Sherman. Currently enrolled in Master program of Software Engneering at Stevens Institute of Technology</p>
+
+          <img src = "https://firebasestorage.googleapis.com/v0/b/quack-f1544.appspot.com/o/sherman.jpg?alt=media&token=b62d3b68-fa45-42e3-abd2-22930119556c" height = 300> </img>
+          <p>
+            <a href="mailto:sherman77.xu@gmail.com" class="btn btn-primary my-2">Email Me</a>
+            <a href="dashboard.html" class="btn btn-primary my-2">Back</a>
+          </p>
+        </div>
+      </section>
+
+
+    </main>
+
+    <!-- Firebase scripts -->
+  <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDb9Ez0_utcuIrj8LZz4iyufABSSbpiaGw",
+      authDomain: "quack-f1544.firebaseapp.com",
+      databaseURL: "https://quack-f1544.firebaseio.com",
+      projectId: "quack-f1544",
+      storageBucket: "quack-f1544.appspot.com",
+      messagingSenderId: "740005547099"
+    };
+    firebase.initializeApp(config);
+    var db = firebase.firestore();
+    // db.settings({
+    //   timestampsInSnapshots: true
+    // });
+  </script>
+    <!-- <script src="{% static 'jquery-3.3.1.min.js' %}"  ></script>
+    <script src="{% static 'js/bootstrap.min.js' %}" ></script>
+    <script src = "{% static 'popper.min.js' %}" ></script> -->
+    
+  </body>
+</html>
