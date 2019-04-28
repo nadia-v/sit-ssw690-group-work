@@ -1,3 +1,5 @@
+var currentUserFromFirebase;
+
 function logout() {
     firebase.auth().signOut().then(function () {
         // Sign-out successful.
@@ -7,6 +9,36 @@ function logout() {
     });
 };
 
+function pullPosts() {
+    db.collection("marketplace_posts").orderBy('adDate', "desc").get().then(function (snapshot) {
+        snapshot.docs.forEach(function (doc) {
+            console.log(doc.data());
+            var postsElement = document.getElementById("posts");
+
+            var unix_timestamp = doc.data().adDate;
+            var date = new Date(unix_timestamp * 1000);
+            // Hours part from the timestamp
+            var hours = date.getHours();
+            // Minutes part from the timestamp
+            var minutes = "0" + date.getMinutes();
+            // Seconds part from the timestamp
+            var seconds = "0" + date.getSeconds();
+
+            // Will display time in 10:30:23 format
+            var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+
+            var newElement =
+                "<li><h1>Title: " + doc.data().adTitle +
+                "</h1><h2>Category: " + doc.data().adCategory +
+                "</h2><h2>Description: " + doc.data().adDescription +
+                "</h2><h2>Status: " + doc.data().adStatus +
+                "</h2><h2>Price: " + doc.data().adPrice +
+                "</h2><h2>Posted on: " + formattedTime + "</h2></li>"
+            postsElement.append(newElement);
+        })
+    });
+}
+
 function initApp() {
 
     // TODO: populate user account info, post info, initialize dashboard page
@@ -14,7 +46,7 @@ function initApp() {
         if (user) {
             // User is signed in.
             console.log(JSON.stringify(user));
-
+            var currentUserFromFirebase = user; // save current user's information for other usage
             var userEmail = user.email;
             var userId = user.uid;
             var displayName = user.displayName;
@@ -28,41 +60,41 @@ function initApp() {
             var marketplace_posts = document.getElementById("marketplace_posts");
 
 
-            db.collection("marketplace_posts").onSnapshot(function (querySnapshot) {
+            // db.collection("marketplace_posts").onSnapshot(function (querySnapshot) {
 
-                querySnapshot.forEach(function (doc) {
+            //     querySnapshot.forEach(function (doc) {
 
-                    const storageRef = firebase.storage().refFromURL(doc.data().imageOne);
-                    storageRef.getDownloadURL().then(function (url) {
-                        // document.getElementById("marketplace-post-image").src = url;
-                        marketplace_posts.innerHTML = " <div class=marketplace-posts><h1>Title: " + doc.data().adTitle +
-                            "</h1><h2>Category: " + doc.data().adCategory +
-                            "</h2><h2>Description: " + doc.data().adDescription +
-                            "</h2><h2>Status: " + doc.data().adStatus +
-                            "</h2><h2>Price: " + doc.data().adPrice +
-                            "</h2><h2>Posted on: " + doc.data().adDate + "</h2></div>"
-                    })
-                })
-            })
+            //         const storageRef = firebase.storage().refFromURL(doc.data().imageOne);
+            //         storageRef.getDownloadURL().then(function (url) {
+            //             // document.getElementById("marketplace-post-image").src = url;
+            //             marketplace_posts.innerHTML = " <div class=marketplace-posts><h1>Title: " + doc.data().adTitle +
+            //                 "</h1><h2>Category: " + doc.data().adCategory +
+            //                 "</h2><h2>Description: " + doc.data().adDescription +
+            //                 "</h2><h2>Status: " + doc.data().adStatus +
+            //                 "</h2><h2>Price: " + doc.data().adPrice +
+            //                 "</h2><h2>Posted on: " + doc.data().adDate + "</h2></div>"
+            //         })
+            //     })
+            // })
 
-            db.collection("marketplace_posts")
-                .orderBy("editDate", "desc")
-                .limit(1).get().then(function (prevSnapshot) {
+            // db.collection("marketplace_posts")
+            //     .orderBy("editDate", "desc")
+            //     .limit(1).get().then(function (prevSnapshot) {
 
-                    prevSnapshot.forEach(function (doc1) {
+            //         prevSnapshot.forEach(function (doc1) {
 
-                        const storageRef = firebase.storage().refFromURL(doc1.data().imageOne);
-                        storageRef.getDownloadURL().then(function (url) {
-                            // document.getElementById("marketplace-post-image1").src = url;
-                            marketplace_posts.innerHTML = " <div class=marketplace-posts1><h1>Title: " + doc1.data().adTitle +
-                                "</h1><h2>Category: " + doc1.data().adCategory +
-                                "</h2><h2>Description: " + doc1.data().adDescription +
-                                "</h2><h2>Status: " + doc1.data().adStatus +
-                                "</h2><h2>Price: " + doc1.data().adPrice +
-                                "</h2><h2>Posted on: " + doc1.data().adDate + "</h2></div>"
-                        })
-                    })
-                })
+            //             const storageRef = firebase.storage().refFromURL(doc1.data().imageOne);
+            //             storageRef.getDownloadURL().then(function (url) {
+            //                 // document.getElementById("marketplace-post-image1").src = url;
+            //                 marketplace_posts.innerHTML = " <div class=marketplace-posts1><h1>Title: " + doc1.data().adTitle +
+            //                     "</h1><h2>Category: " + doc1.data().adCategory +
+            //                     "</h2><h2>Description: " + doc1.data().adDescription +
+            //                     "</h2><h2>Status: " + doc1.data().adStatus +
+            //                     "</h2><h2>Price: " + doc1.data().adPrice +
+            //                     "</h2><h2>Posted on: " + doc1.data().adDate + "</h2></div>"
+            //             })
+            //         })
+            //     })
 
 
             //------------------------------------------------------------------------//
@@ -126,6 +158,7 @@ function initApp() {
 
 window.onload = function () {
     initApp();
+    pullPosts();
 };
 
 // var email_id = user.email;

@@ -715,10 +715,12 @@
                 alt="">
             </div>
             <p>Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow"
-                href="https://undraw.co/">unDraw</a>, a constantly updated collection of beautiful svg images
+                href="https://undraw.co/">unDraw</a>, a constantly updated collection of beautiful svg
+              images
               that
               you can use completely free and without attribution!</p>
           </div>
+          <ul id="posts"></ul>
           <div class="card-footer py-3">
             <a target="_blank" rel="nofollow" href="#">Contact by Email
               &rarr;</a>
@@ -799,14 +801,12 @@
   <!-- Page level plugins -->
   <!-- <script src="vendor/chart.js/Chart.min.js"></script> -->
 
-  <!-- Page level custom scripts -->
-  <script src="js/demo/chart-area-demo.js"></script>
-  <script src="js/demo/chart-pie-demo.js"></script>
-
   <div id="user_details"></div>
 
   <!-- Firebase scripts -->
-  <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-firestore.js"></script>
   <script>
     // Initialize Firebase
     var config = {
@@ -823,7 +823,7 @@
     //   timestampsInSnapshots: true
     // });
   </script>
-  <script src="js/dashboard.js"></script>
+  <script defer src="js/dashboard.js"></script>
 </body>
 
 </html>
