@@ -35,10 +35,11 @@ db.collection("marketplace_posts")
             marketplace_posts.innerHTML += '<p><b>Date: </b>' + myDate +'</p>';   
             marketplace_posts.innerHTML += '<p><b>Description: </b>' + doc.data().adDescription +'</p>';   
             marketplace_posts.innerHTML += '<p><b>Price: </b>' + doc.data().adPrice +'</p>';   
+            marketplace_posts.innerHTML += '<p><b>Price: </b>' + doc.data().emailUser +'</p>'; 
             marketplace_posts.innerHTML += '<p><b>Status: </b>' + doc.data().adStatus +'</p></div>';
             marketplace_posts.innerHTML += '<ul id="posts"></ul>';
             marketplace_posts.innerHTML += '<div class="card-footer py-3">';  
-            marketplace_posts.innerHTML += '<a target="_blank" rel="nofollow" href="" class="btn btn-primary my-2">Email Me</a></div></div></div></div>';
+            marketplace_posts.innerHTML += '<a target="_blank" rel="nofollow" href="mailto:' + doc.data().emailUser + '"class="btn btn-primary my-2">Email Me</a></div></div></div></div>';
             
         })       
     }
