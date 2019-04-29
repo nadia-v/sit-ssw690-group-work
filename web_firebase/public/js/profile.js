@@ -41,7 +41,37 @@ function initApp() {
             var userId = user.uid;
             var displayName = user.displayName;
 
-            var marketplace = db.collection("marketplace_posts").where("idUser", "==", "SxBECXFKVjQcc4XCD4aEdhXMy5u2");
+            // var name = document.getElementById("Username");
+            // name.innerHTML=userEmail;
+
+            var userinfo = db.collection("Users").doc(userId);
+            userinfo.get().then(function(doc) {
+                if (doc.exists) {
+                    console.log("Document data:", doc.data());
+
+                    var name = document.getElementById("User_name");
+                    name.innerHTML = doc.data().userName;
+
+                    var description = document.getElementById("Userdescription");
+                    description.innerHTML = doc.data().userDescription;
+
+                    var photo = document.getElementById("Userigame");
+                    photo.src = doc.data().profileImage;
+
+                    var contact = document.getElementById("Emailbutton");
+                    contact.href="mailto:" + doc.data().email;
+
+                } else {
+                    // doc.data() will be undefined in this case
+                    console.log("No such document!");
+                }
+            }).catch(function(error) {
+                console.log("Error getting document:", error);
+            });
+
+
+
+            var marketplace = db.collection("marketplace_posts").where("idUser", "==", userId);
                 marketplace.get()
                 .then(function(querySnapshot) {
                     querySnapshot.forEach(function(doc) {
@@ -62,7 +92,7 @@ function initApp() {
                     console.log("Error getting documents: ", error);
                 });
             
-            var social = db.collection("social_posts").where("idUser", "==", "SxBECXFKVjQcc4XCD4aEdhXMy5u2");
+            var social = db.collection("social_posts").where("idUser", "==", userId);
                 social.get()
                 .then(function(querySnapshot) {
                     querySnapshot.forEach(function(doc) {
@@ -79,7 +109,7 @@ function initApp() {
                     console.log("Error getting documents: ", error);
                 });
 
-            var housing = db.collection("housing_posts").where("idUser", "==", "SxBECXFKVjQcc4XCD4aEdhXMy5u2");
+            var housing = db.collection("housing_posts").where("idUser", "==", userId);
                 housing.get()
                 .then(function(querySnapshot) {
                     querySnapshot.forEach(function(doc) {
