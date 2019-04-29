@@ -39,14 +39,54 @@
 
       <section class="jumbotron text-center">
         <div class="container">
-          <h1 class="jumbotron-heading">Sherman Xu</h1>
-          <p class="lead text-muted">I am Sherman. Currently enrolled in Master program of Software Engneering at Stevens Institute of Technology</p>
+          <h1 id="User_name" class="jumbotron-heading"> </h1>
+          <p class="lead text-muted" id="Userdescription"></p>
 
-          <img src = "https://firebasestorage.googleapis.com/v0/b/quack-f1544.appspot.com/o/sherman.jpg?alt=media&token=b62d3b68-fa45-42e3-abd2-22930119556c" height = 300> </img>
+          <img id="Userigame" height = 300> 
           <p>
-            <a href="mailto:sherman77.xu@gmail.com" class="btn btn-primary my-2">Email Me</a>
+            <a id="Emailbutton"  class="btn btn-primary my-2">Email Me</a>
             <a href="dashboard.html" class="btn btn-primary my-2">Back</a>
           </p>
+        </div>
+      </section>
+
+      <section class="col-lg-8 mb-4">
+        <div calss="cardshadow mb-4">
+          <div class="car-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Posting history for Marketplace</h6>
+          </div>
+          <div class="card-body">
+
+              <ul id="market_posts"></ul>
+
+            
+          </div>
+        </div>
+      </section>
+
+      <section class="col-lg-8 mb-4">
+        <div calss="cardshadow mb-4">
+          <div class="car-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Posting history for Housing</h6>
+          </div>
+          <div class="card-body">
+            
+            <ul id="house_posts"></ul>
+            
+          </div>
+        </div>
+      </section>
+
+      <section class="col-lg-8 mb-4">
+        <div calss="cardshadow mb-4">
+          <div class="car-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Posting history for Social</h6>
+          </div>
+          <div class="card-body">
+            
+            <ul id="social_event_posts"></ul>
+            
+          </div>
         </div>
       </section>
 
@@ -71,6 +111,7 @@
     //   timestampsInSnapshots: true
     // });
   </script>
+  <script defer src="js/profile.js"></script>
     <!-- <script src="{% static 'jquery-3.3.1.min.js' %}"  ></script>
     <script src="{% static 'js/bootstrap.min.js' %}" ></script>
     <script src = "{% static 'popper.min.js' %}" ></script> -->
