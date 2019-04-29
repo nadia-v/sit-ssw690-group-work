@@ -80,10 +80,11 @@ function initApp() {
 
                         var postsElement = document.getElementById("market_posts");
 
-                        var newElement = 
-                        "<li><h1>ID: " + doc.id + "</h1></li>"
+                        var li = document.createElement("li");
+
+                        li.innerHTML = doc.data().adTitle;
                 
-                        postsElement.append(newElement);
+                        postsElement.appendChild(li);
                     });
                 
                     
@@ -100,9 +101,12 @@ function initApp() {
                         console.log(doc.id, " => ", doc.data());
 
                         var postsElement = document.getElementById("social_event_posts");
-                        var newElement = 
-                        "<li><h1>ID: " + doc.id + "</h1></li>"
-                        postsElement.append(newElement);
+
+                        var li = document.createElement("li");
+
+                        li.innerHTML = doc.data().adTitle;
+                
+                        postsElement.appendChild(li);
                     });
                 })
                 .catch(function(error) {
@@ -117,9 +121,12 @@ function initApp() {
                         console.log(doc.id, " => ", doc.data());
 
                         var postsElement = document.getElementById("house_posts");
-                        var newElement = 
-                        "<li><h1>ID: " + doc.id + "</h1></li>"
-                        postsElement.append(newElement);
+                        
+                        var li = document.createElement("li");
+
+                        li.innerHTML = doc.data().adTitle;
+                
+                        postsElement.appendChild(li);
                     });
                 })
                 .catch(function(error) {
