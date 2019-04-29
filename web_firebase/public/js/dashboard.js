@@ -170,8 +170,7 @@ function initApp() {
                             idUser: userId,
                             emailUser: userEmail,
                             imageOne: url,
-                            imageTwo: '',
-                            imageThree: '',
+
 
                         });
                     })
