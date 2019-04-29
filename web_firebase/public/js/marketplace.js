@@ -1,24 +1,8 @@
 
-// db.collection("marketplace_posts").onSnapshot(function(querySnapshot) {
-    
-//     querySnapshot.forEach(function(doc) {     
-
-//         const storageRef = firebase.storage().refFromURL(doc.data().imageOne);
-//         storageRef.getDownloadURL().then(function(url) {       
-//             document.getElementById("marketplace-post-image").src = url;  
-//             marketplace_posts.innerHTML = " <div class=marketplace-posts><h1>Title: " + doc.data().adTitle +
-//             "</h1><h2>Category: " + doc.data().adCategory + 
-//             "</h2><h2>Description: " + doc.data().adDescription + 
-//             "</h2><h2>Status: " + doc.data().adStatus + 
-//             "</h2><h2>Price: " + doc.data().adPrice + 
-//             "</h2><h2>Posted on: " + doc.data().adDate+ "</h2></div>"  
-//           })
-//     })
-// })
 
 
 db.collection("marketplace_posts")
-    .orderBy("editDate", "desc")
+    .orderBy("adDate", "desc")
     .get().then(snapshot => {
 
         snapshot.forEach(doc => {
@@ -28,16 +12,27 @@ db.collection("marketplace_posts")
         storageRef.getDownloadURL().then(function(url) {  
             //document.getElementById("marketplace-post-image").src = url
 
-            marketplace_posts.innerHTML += '<div class=col-lg-8 mb-4>';
-            marketplace_posts.innerHTML += "<div class=card shadow mb-4>";
-            marketplace_posts.innerHTML += '<div class=card-header py-3>';
-            marketplace_posts.innerHTML += '<h3 class=m-0 font-weight-bold text-primary<b>' + doc.data().adTitle + '</b></h3>';
-            marketplace_posts.innerHTML += '</div';
-            marketplace_posts.innerHTML += '<img class=img-fluid px-3 px-sm-4 mt-3 mb-4 style=width: 25rem; id="marketplace-post-image" src=' + url + 'alt="">';
-            marketplace_posts.innerHTML += '<div class=card-body>';
-            marketplace_posts.innerHTML += '<div class=text-center>';
+            var date = new Date(doc.data().adDate);
+            var day = date.getDate();
+            var months = new Array("January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+            var month = months[date.getMonth() + 1]; 
+            var year = date.getFullYear();
+            var hours = date.getHours();
+            var min = date.getMinutes();
+            var sec = date.getSeconds();
+            var myDate =  month + ' ' + day + ', ' + year + ', ' + hours + ':' + min + ':' + sec;
+
+
+            marketplace_posts.innerHTML += '<div class="col-lg-8 mb-4">';
+            marketplace_posts.innerHTML += '<div class="card shadow mb-4">';
+            marketplace_posts.innerHTML += '<div class="card-header py-3">';
+            marketplace_posts.innerHTML += '<h3 class="m-0 font-weight-bold text-primary"<b>' + doc.data().adTitle + '</b></h3>';
+            marketplace_posts.innerHTML += '</div>';
+            marketplace_posts.innerHTML += '<div class="card-body">';
+            marketplace_posts.innerHTML += '<div class="text-center">';
+            marketplace_posts.innerHTML += '<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem"; id="marketplace-post-image" src=' + url + 'alt="">';
             marketplace_posts.innerHTML += '<p><b>Category: </b>'+ doc.data().adCategory +'</p>'; 
-            marketplace_posts.innerHTML += '<p><b>Date: </b>' + doc.data().adDate +'</p>';   
+            marketplace_posts.innerHTML += '<p><b>Date: </b>' + myDate +'</p>';   
             marketplace_posts.innerHTML += '<p><b>Description: </b>' + doc.data().adDescription +'</p>';   
             marketplace_posts.innerHTML += '<p><b>Price: </b>' + doc.data().adPrice +'</p>';   
             marketplace_posts.innerHTML += '<p><b>Status: </b>' + doc.data().adStatus +'</p></div>';
@@ -45,61 +40,59 @@ db.collection("marketplace_posts")
             marketplace_posts.innerHTML += '<div class="card-footer py-3">';  
             marketplace_posts.innerHTML += '<a target="_blank" rel="nofollow" href="" class="btn btn-primary my-2">Email Me</a></div></div></div></div>';
             
-        })
-          
+        })       
     }
-
-        })
-    
+        })   
 })
+
 
 
 //------------------------------------------------------------------------//
-const housing_form  = document.querySelector('#add_housing');
-const market_form = document.querySelector('#add_marketplace');
-const social_form = document.querySelector('#add_social')
-var time = new Date();
-var date = time.getTime();
+const marketplace_form = document.querySelector('#add_marketplace');
+    const housing_form = document.querySelector('#add_housing');
+    const social_form = document.querySelector('#add_social');
 
-//saving data for marketplace
-market_form.addEventListener('submit', (e) => {
-    //Prevent the default action
-    e.preventDefault();
-    
-    //Create root reference
-    const ref = firebase.storage().ref();
-    
-    //Select the file
-    const file = document.querySelector('#marketplace_picture').files[0];
-    
-    //Set file name
-    const name = file.name;
-    
-    //Create the task
-    const task = ref.child("/marketplace_posts/" + name).put(file);
-    
-    //Put the pic to firebase 
-    task
-        .then(snapshort => snapshort.ref.getDownloadURL())
-        .then((url) => {
-            console.log(url);
-            //Create record on firestore
-            db.collection('marketplace_posts').add({
-                adTitle: market_form.title.value,
-                adDescription: market_form.description.value,
-                adPrice: market_form.price.value,
-                imageOne: url,
-                adCategory: market_form.category.value,
-                adStatus: "active",
-                adDate: date,
-                idUser: "fkFTTR55iyakzpy8FlD8BXUGkuF3",
-        
-            });
-        })
-        .catch(console.error);
-    
+    var time = new Date();
+    var date = time.getTime();
+    var userEmail = user.email;
+    var userId = user.uid;
 
-})
+    // saving data for marketplace
+    marketplace_form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const ref = firebase.storage().ref();
+        //Select the file
+        const file = document.querySelector('#marketplace_picture').files[0];
+        //Set file name
+        const name = file.name;
+        //Create the task
+        const task = ref.child("/marketplace_posts/" + name).put(file);
+        //Put the pic to firebase 
+        task
+            .then(snapshort => snapshort.ref.getDownloadURL())
+            .then((url) => {
+                console.log(url);
+
+                db.collection('marketplace_posts').add({
+                    adTitle: marketplace_form.title.value,
+                    adDescription: marketplace_form.description.value,
+                    adPrice: marketplace_form.price.value,
+                    imageOne: url,
+                    adCategory: marketplace_form.category.value,
+                    adStatus: "active",
+                    adDate: date,
+                    idUser: userId,
+                    emailUser: userEmail,
+                    imageOne: url,
+                    imageTwo: '',
+                    imageThree: '',
+
+                });
+            })
+            .catch(console.error);
+    })
+
 
 
 // saving data for housing
@@ -183,3 +176,10 @@ social_form.addEventListener('submit', (e) => {
     
 
 })
+
+
+
+
+
+
+
