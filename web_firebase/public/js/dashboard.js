@@ -1,5 +1,3 @@
-var currentUserFromFirebase;
-
 function logout() {
     firebase.auth().signOut().then(function () {
         // Sign-out successful.
@@ -9,39 +7,67 @@ function logout() {
     });
 };
 
-function pullPosts() {
-    db.collection("marketplace_posts").orderBy('adDate', "desc").get().then(function (snapshot) {
+function convertTimeFormat(unixTimestamp) {
+    // helper function to convert any unix timestamps into human readable format
+    var date = new Date(unixTimestamp * 1000); // Javascript stores dates as milliseconds
+    // // Hours part from the timestamp
+    // var hours = date.getHours();
+    // // Minutes part from the timestamp
+    // var minutes = "0" + date.getMinutes();
+    // // Seconds part from the timestamp
+    // var seconds = "0" + date.getSeconds();
+    // // Will display time in 10:30:23 format
+    // var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+    return date.toDateString();
+}
+
+function generatePostCard(dbEntry) {
+    if (!dbEntry) {
+        return null;
+    } else {
+        var displayTime = convertTimeFormat(dbEntry.data.adDate);
+        var userID = dbEntry.data.idUser;
+        // db.collection("user").
+        var parser = new DOMParser();
+        var domString =
+            '<div class="row"><div class="col-lg-12 mb-4">' +
+            '<div class="card shadow mb-4">' +
+            '<div class="card-header py-3">' + '<h6 class="m-0 font-weight-bold text-primary">' + dbEntry.data().adTitle + '</h6>' + '</div>' +
+            '<div class="card-body">' +
+            '<div class="text-center">' +
+            '<img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="img/undraw_posting_photo.svg" alt="">' +
+            '</div>' +
+            '<p>' + dbEntry.data().adDescription + '</p>' +
+            '</div>' + '<div class="card-footer py-3">' +
+            '<a target="_blank" rel="nofollow" href="#">Contact by Email &rarr;</a>' +
+            '</div></div></div></div></div>';
+        var newHtml = parser.parseFromString(domString, 'text/html');
+        // var newElement = document.createElement('div');
+        //     "</h1><h2>Category: " + doc.data().adCategory +
+        //     "</h2><h2>Status: " + doc.data().adStatus +
+        //     "</h2><h2>Price: " + doc.data().adPrice +
+        //     "</h2><h2>Posted on: " + formattedTime + "</h2></li>";
+
+        return newHtml;
+    }
+}
+
+function pullPosts(category, targetColumn) {
+    db.collection(category).orderBy('adDate', "desc").get().then(function (snapshot) {
+        var times = 0;
         snapshot.docs.forEach(function (doc) {
+            var pageContent = document.getElementById(targetColumn);
             console.log(doc.data());
-            var postsElement = document.getElementById("posts");
+            var newElementToInsert = generatePostCard(doc).body.firstChild;
+            console.log(newElementToInsert);
 
-            var unix_timestamp = doc.data().adDate;
-            var date = new Date(unix_timestamp * 1000);
-            // Hours part from the timestamp
-            var hours = date.getHours();
-            // Minutes part from the timestamp
-            var minutes = "0" + date.getMinutes();
-            // Seconds part from the timestamp
-            var seconds = "0" + date.getSeconds();
-
-            // Will display time in 10:30:23 format
-            var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-
-            var newElement =
-                "<li><h1>Title: " + doc.data().adTitle +
-                "</h1><h2>Category: " + doc.data().adCategory +
-                "</h2><h2>Description: " + doc.data().adDescription +
-                "</h2><h2>Status: " + doc.data().adStatus +
-                "</h2><h2>Price: " + doc.data().adPrice +
-                "</h2><h2>Posted on: " + formattedTime + "</h2></li>"
-            postsElement.append(newElement);
+            pageContent.appendChild(newElementToInsert);
+            times++;
         })
     });
 }
 
 function initApp() {
-
-    // TODO: populate user account info, post info, initialize dashboard page
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
             // User is signed in.
@@ -56,6 +82,10 @@ function initApp() {
                 document.getElementById("user_display").innerHTML = displayName;
             }
 
+
+            pullPosts("marketplace_posts", "marketplace");
+            pullPosts("housing_posts", "housing");
+            pullPosts("social_posts", "socialplace");
 
             var marketplace_posts = document.getElementById("marketplace_posts");
 
@@ -230,9 +260,6 @@ function initApp() {
 
 
             })
-
-
-
         } else {
             // User is signed out.
         }
@@ -246,8 +273,9 @@ function initApp() {
 };
 
 window.onload = function () {
+
     initApp();
-    pullPosts();
+
 };
 
 // var email_id = user.email;
