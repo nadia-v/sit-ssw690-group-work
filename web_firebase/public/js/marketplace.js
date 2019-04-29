@@ -16,6 +16,7 @@
 //     })
 // })
 
+
 db.collection("marketplace_posts")
     .orderBy("editDate", "desc")
     .get().then(snapshot => {
@@ -26,18 +27,23 @@ db.collection("marketplace_posts")
         var storageRef = firebase.storage().refFromURL(doc.data().imageOne);
         storageRef.getDownloadURL().then(function(url) {  
             //document.getElementById("marketplace-post-image").src = url
-            
-            marketplace_posts.innerHTML += "<div class=card mb-4>";
-            marketplace_posts.innerHTML += '<img class="card-img-top" id="marketplace-post-image" src=' + url + 'alt="Card image cap" style="width:500px">'; 
-            marketplace_posts.innerHTML +='<div class="card-body>';
-            marketplace_posts.innerHTML += '<h5>Category: '+ doc.data().adCategory +'</h5>'; 
-            marketplace_posts.innerHTML += '<h5>Date: ' + doc.data().adDate +'</h5>';   
-            marketplace_posts.innerHTML += '<h5>Description: ' + doc.data().adDescription +'</h5>';   
-            marketplace_posts.innerHTML += '<h5>Price: ' + doc.data().adPrice +'</h5>';   
-            marketplace_posts.innerHTML += '<h5>Status: ' + doc.data().adStatus +'</h5>';   
-            marketplace_posts.innerHTML += '<h5>Title: ' + doc.data().adTitle +'</h5>';
-            marketplace_posts.innerHTML += '<a href="" class="btn btn-primary my-2">Email Me</a>';
-            marketplace_posts.innerHTML += '<div class="card-footer text-muted"></div></div>';  
+
+            marketplace_posts.innerHTML += '<div class=col-lg-8 mb-4>';
+            marketplace_posts.innerHTML += "<div class=card shadow mb-4>";
+            marketplace_posts.innerHTML += '<div class=card-header py-3>';
+            marketplace_posts.innerHTML += '<h3 class=m-0 font-weight-bold text-primary<b>' + doc.data().adTitle + '</b></h3>';
+            marketplace_posts.innerHTML += '</div';
+            marketplace_posts.innerHTML += '<img class=img-fluid px-3 px-sm-4 mt-3 mb-4 style=width: 25rem; id="marketplace-post-image" src=' + url + 'alt="">';
+            marketplace_posts.innerHTML += '<div class=card-body>';
+            marketplace_posts.innerHTML += '<div class=text-center>';
+            marketplace_posts.innerHTML += '<p><b>Category: </b>'+ doc.data().adCategory +'</p>'; 
+            marketplace_posts.innerHTML += '<p><b>Date: </b>' + doc.data().adDate +'</p>';   
+            marketplace_posts.innerHTML += '<p><b>Description: </b>' + doc.data().adDescription +'</p>';   
+            marketplace_posts.innerHTML += '<p><b>Price: </b>' + doc.data().adPrice +'</p>';   
+            marketplace_posts.innerHTML += '<p><b>Status: </b>' + doc.data().adStatus +'</p></div>';
+            marketplace_posts.innerHTML += '<ul id="posts"></ul>';
+            marketplace_posts.innerHTML += '<div class="card-footer py-3">';  
+            marketplace_posts.innerHTML += '<a target="_blank" rel="nofollow" href="" class="btn btn-primary my-2">Email Me</a></div></div></div></div>';
             
         })
           
