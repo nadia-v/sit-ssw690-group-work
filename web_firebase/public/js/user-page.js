@@ -47,9 +47,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         }
 
         if (user != null) {
-            setTimeout(function () {
-                window.location = '/dashboard';
-            }, 3000);
+            window.location = '/dashboard';
         }
     } else {
         // No user is signed in.
@@ -119,4 +117,11 @@ function register() {
 window.onload = function () {
     document.getElementById("login_tab").style.display = "block";;
     document.getElementById("register_tab").style.display = "none";;
+    // Make sure this code gets executed after the DOM is loaded.
+    document.querySelector("#password_field").addEventListener("keyup", event => {
+        if (event.key !== "Enter") return; // Use `.key` instead.
+        document.querySelector("#login-button").click(); // Things you want to do.
+        event.preventDefault(); // No need to `return false;`.
+    });
+
 };
