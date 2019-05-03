@@ -76,7 +76,7 @@ function generatePostCard(dbEntry) {
         var domString =
             '<div class="row"><div class="col-lg-12 mb-4">' +
             '<div class="card shadow mb-4">' +
-            '<div class="card-header py-3">' + '<h6 class="m-0 font-weight-bold text-danger">' + '(' + dbEntry.data().adCategory + ') ' + dbEntry.data().adTitle + '</h6>' + '<h6 class="m-0 text-right">' + displayTime + ' ago</h6>' +
+            '<div class="card-header py-3">' + '<h6 class="m-0 font-weight-bold text-danger">' + '[' + dbEntry.data().adCategory + '] ' + dbEntry.data().adTitle + '</h6>' + '<h6 class="m-0 text-right">' + displayTime + ' ago</h6>' +
             '</div>' +
             '<div class="card-body">' +
             '<div class="text-center">' +
@@ -127,10 +127,16 @@ function initApp() {
                 document.getElementById("user_display").innerHTML = displayName;
             }
 
-
-            pullPosts("marketplace_posts", "marketplace");
-            pullPosts("housing_posts", "housing");
-            pullPosts("social_posts", "socialplace");
+            // rendering posts to the DOM from database queries (for all pages)
+            if (document.getElementById("marketplace")) {
+                pullPosts("marketplace_posts", "marketplace");
+            }
+            if (document.getElementById("housing")) {
+                pullPosts("housing_posts", "housing");
+            }
+            if (document.getElementById("socialplace")) {
+                pullPosts("social_posts", "socialplace");
+            }
 
             var marketplace_posts = document.getElementById("marketplace_posts");
 

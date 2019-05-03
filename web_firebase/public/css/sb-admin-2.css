@@ -13280,3 +13280,7 @@ body.sidebar-toggled footer.sticky-footer {
   align-items: center;
   vertical-align: middle;
 }
+
+.highlighted {
+  border-color: #eaecf4 #eaecf4 #dddfeb;
+}
