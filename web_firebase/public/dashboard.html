@@ -32,9 +32,17 @@
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/dashboard">
-        <div class="sidebar-brand-icon rotate-n-15 duck-logo">
-        </div>
-        <div class="sidebar-brand-icon font-logo"></div>
+        <!-- <div class="sidebar-brand-icon rotate-n-15 duck-logo"></div>
+        <div class="sidebar-brand-icon font-logo"></div> -->
+
+        <img src="img/logo.jpg" style="width:100px">
+      </a>
+
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/dashboard">
+        <!-- <div class="sidebar-brand-icon rotate-n-15 duck-logo"></div>
+        <div class="sidebar-brand-icon font-logo"></div> -->
+
+        <img src="img/logo_duck.jpg" style="width:100px ; height:100px">
       </a>
 
       <!-- Divider -->
@@ -42,26 +50,26 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Sub-Categories
+
       </div>
 
       <!-- Nav Item - Marketplace -->
       <li class="nav-item">
-        <a class="nav-link" href="marketplace.html">
+        <a class="nav-link" href="/marketplace">
           <i class="fas fa-fw fa-chair"></i>
           <span>Marketplace</span></a>
       </li>
 
       <!-- Nav Item - Housing -->
       <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="/housing">
           <i class="fas fa-fw fa-city"></i>
           <span>Housing</span></a>
       </li>
 
       <!-- Nav Item - Social Place -->
       <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="/socialplace">
           <i class="fas fa-fw fa-cheese"></i>
           <span>Social Place</span></a>
       </li>
@@ -94,7 +102,7 @@
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
-            <div class="topbar-divider d-none d-sm-block"></div>
+
 
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
@@ -115,7 +123,10 @@
                   Logout
                 </a>
               </div>
+
             </li>
+
+
 
           </ul>
 
@@ -129,13 +140,18 @@
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Posts</h1>
 
-            <!-- Nav Item - User Information -->
+            <!-- Nav Item - Post Button -->
 
-            <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" href="#"
-                id="postDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Write
-                a New Post</a>
+            <div class="nav-item dropdown no-arrow text-center">
+              <!-- <div class="nav-link dropdown-toggle d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm "
+    role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  </div> -->
 
+              <button class="btn btn-secondary btn-sm btn-primary shadow-sm dropdown-toggle text-center" type="button"
+                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                id="postDropdown">
+                Write a New Post
+              </button>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" data-toggle="modal" data-target="#marketplace_modal">
@@ -152,7 +168,7 @@
                 </a>
 
               </div>
-            </li>
+            </div>
 
           </div> <!-- end Page Heading -->
 
