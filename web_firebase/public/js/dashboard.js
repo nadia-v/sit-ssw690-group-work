@@ -65,12 +65,18 @@ function generatePostCard(dbEntry) {
         var userID = dbEntry.data().idUser;
         var url = dbEntry.data().imageOne;
 
+        var email = dbEntry.data().emailUser;
+        var emailButton = '<a class="btn btn-primary my-2" target="_blank" rel="nofollow" href="mailto:' + email + '">Email Me &rarr;</a>';
+        if (email === undefined) {
+            emailButton = '<a class="btn btn-primary my-2" target="_blank" rel="nofollow" disabled>Email Me &rarr;</a>';
+        }
+
         // db.collection("user").
         var parser = new DOMParser();
         var domString =
             '<div class="row"><div class="col-lg-12 mb-4">' +
             '<div class="card shadow mb-4">' +
-            '<div class="card-header py-3">' + '<h6 class="m-0 font-weight-bold text-primary">' + dbEntry.data().adTitle + '</h6>' + '<h6 class="m-0 text-right">' + displayTime + ' ago</h6>' +
+            '<div class="card-header py-3">' + '<h6 class="m-0 font-weight-bold text-danger">' + '[' + dbEntry.data().adCategory + '] ' + dbEntry.data().adTitle + '</h6>' + '<h6 class="m-0 text-right">' + displayTime + ' ago</h6>' +
             '</div>' +
             '<div class="card-body">' +
             '<div class="text-center">' +
@@ -78,7 +84,7 @@ function generatePostCard(dbEntry) {
             '</div>' +
             '<p>' + dbEntry.data().adDescription + '</p>' +
             '</div>' + '<div class="card-footer py-3">' +
-            '<a target="_blank" rel="nofollow" href="#">Contact by Email &rarr;</a>' +
+            emailButton +
             '</div></div></div></div></div>';
         var newHtml = parser.parseFromString(domString, 'text/html');
         // var newElement = document.createElement('div');
@@ -121,10 +127,16 @@ function initApp() {
                 document.getElementById("user_display").innerHTML = displayName;
             }
 
-
-            pullPosts("marketplace_posts", "marketplace");
-            pullPosts("housing_posts", "housing");
-            pullPosts("social_posts", "socialplace");
+            // rendering posts to the DOM from database queries (for all pages)
+            if (document.getElementById("marketplace")) {
+                pullPosts("marketplace_posts", "marketplace");
+            }
+            if (document.getElementById("housing")) {
+                pullPosts("housing_posts", "housing");
+            }
+            if (document.getElementById("socialplace")) {
+                pullPosts("social_posts", "socialplace");
+            }
 
             var marketplace_posts = document.getElementById("marketplace_posts");
 
