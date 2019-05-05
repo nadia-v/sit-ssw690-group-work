@@ -13275,3 +13275,12 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
 }
+
+#postDropdown {
+  align-items: center;
+  vertical-align: middle;
+}
+
+.highlighted {
+  border-color: #eaecf4 #eaecf4 #dddfeb;
+}

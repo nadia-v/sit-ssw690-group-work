@@ -9,7 +9,8 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>QuAck</title>
+  <title>QuAck - Social Place</title>
+
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -46,10 +47,12 @@
       <div class="sidebar-heading"></div>
 
       <!-- Nav Item - Marketplace -->
+
       <li class="nav-item">
         <a class="nav-link" href="/marketplace">
           <i class="fas fa-fw fa-chair"></i>
           <span>Marketplace</span></a>
+        <form id="add_marketplace"></form>
       </li>
 
       <!-- Nav Item - Housing -->
@@ -57,13 +60,15 @@
         <a class="nav-link" href="/housing">
           <i class="fas fa-fw fa-city"></i>
           <span>Housing</span></a>
+        <form id="add_housing"></form>
       </li>
 
       <!-- Nav Item - Social Place -->
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="/socialplace">
           <i class="fas fa-fw fa-cheese"></i>
           <span>Social Place</span></a>
+        <form id="add_social"></form>
       </li>
 
       <!-- Divider -->
@@ -122,152 +127,38 @@
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid" id="main-post-area">
+        <div class="container-fluid">
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Posts</h1>
+            <h1 class="h3 mb-0 text-gray-800">Social Place</h1>
 
-            <!-- Nav Item - Post Button -->
+            <!-- Nav Item - User Information -->
 
-            <div class="nav-item dropdown no-arrow text-center">
-
+            <div class="nav-item dropdown no-arrow">
               <button class="btn btn-secondary btn-sm btn-primary shadow-sm dropdown-toggle text-center" type="button"
                 id="postDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Write a New Post
               </button>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" data-toggle="modal" data-target="#marketplace_modal">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Marketplace
-                </a>
                 <a class="dropdown-item" data-toggle="modal" data-target="#social_modal">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Social
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Social Meet Up
                 </a>
-                <a class="dropdown-item" data-toggle="modal" data-target="#housing_modal">
+                <a class="dropdown-item" data-toggle="modal" data-target="#marketplace_modal">
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Sporting Events
+                </a>
+                <a class="dropdown-item" data-toggle="modal" data-target="#marketplace_modal">
                   <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Housing
+                  Movie/Theater Evens
                 </a>
 
               </div>
             </div>
 
           </div> <!-- end Page Heading -->
-
-
-          <!-- ------------------------Marketplace Modal ----------------------------------------->
-          <div id="marketplace_modal" class="modal fade" role="dialog">
-            <div class="modal-dialog mw-100 w-75">
-
-              <!-- Modal content-->
-              <div class="modal-content">
-                <form class="form-horizontal" id="add_marketplace" role="form">
-                  <h1>New Post for Marketplace</h1>
-
-                  <div class="form-group">
-                    <label for="title" class="col-sm-3 control-label">Title</label>
-                    <div class="col-sm-9">
-                      <input type="text" class="form-control" id="title" placeholder="Title">
-                    </div>
-
-
-                    <label for="description" class="col-sm-3 control-label">Description</label>
-                    <div class="col-md-9">
-                      <input type="text" class="form-control" id="description" placeholder="Description">
-                    </div>
-
-
-
-                    <label for="price" class="col-sm-3 control-label">Price</label>
-                    <div class="col-sm-9">
-                      <input type="number" class="form-control" id="price" placeholder="Price">
-                    </div>
-
-
-
-                    <label for="picture" class="col-sm-3 control-label">Picture</label>
-                    <div class="col-sm-3">
-                      <input type="file" class="form-control" id="marketplace_picture" placeholder="Picture">
-                    </div>
-
-                    <label for="category" class="col-sm-3 control-label">Category</label>
-                    <select name="category">
-                      <option value="Books">Books</option>
-                      <option value="Furnitures">Furnitures</option>
-                      <option value="Electronics">Electronics</option>
-                      <option value="Miscellaneous">Miscellaneous</option>
-                    </select>
-                  </div>
-
-
-                  <div class="modal-footer">
-                    <button>Submit</button>
-                    <button data-dismiss="modal">Close</button>
-
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-
-
-
-
-          <!-- ------------------------Housing Modal ----------------------------------------->
-          <div id="housing_modal" class="modal fade" role="dialog">
-            <div class="modal-dialog mw-100 w-75">
-
-              <!-- Modal content-->
-              <div class="modal-content">
-                <form id="add_housing">
-                  <h1>New Post for Housing</h1>
-
-                  <div class="form-group">
-                    <label for="title" class="col-sm-3 control-label">Title</label>
-                    <div class="col-sm-9">
-                      <input type="text" class="form-control" id="title" placeholder="Title">
-                    </div>
-
-
-
-                    <label for="description" class="col-sm-3 control-label">Description</label>
-                    <div class="col-sm-9">
-                      <input type="text" class="form-control" id="description" placeholder="Description">
-                    </div>
-
-
-
-                    <label for="rent" class="col-sm-3 control-label">Rent</label>
-                    <div class="col-sm-9">
-                      <input type="number" class="form-control" id="rent" placeholder="Monthly Rent">
-                    </div>
-
-
-
-                    <label for="picture" class="col-sm-3 control-label">Picture</label>
-                    <div class="col-sm-9">
-                      <input type="file" class="form-control" id="housing_picture" placeholder="Picture">
-                    </div>
-
-
-                    <label for="category" class="col-sm-3 control-label">Category</label>
-                    <select name="category">
-                      <option value="Need a room">I NEED a room</option>
-                      <option value="Have spare room">I HAVE a room</option>
-                    </select>
-                  </div>
-
-
-                  <div class="modal-footer">
-                    <button>Submit</button>
-                    <button data-dismiss="modal">Close</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
 
 
           <!-- ------------------------Social Modal ----------------------------------------->
@@ -326,20 +217,15 @@
             </div>
           </div>
 
+
+
           <!-- Content Row -->
           <div class="row">
 
-            <div class="col-lg-4 mb-4" id="marketplace">
+            <div class="col-lg-8 mb-4" id="socialplace">
               <!-- cards placed here -->
             </div>
 
-            <div class="col-lg-4 mb-4" id="housing">
-              <!-- cards placed here -->
-            </div>
-
-            <div class="col-lg-4 mb-4" id="socialplace">
-              <!-- cards placed here -->
-            </div>
           </div>
         </div>
         <!-- /.container-fluid -->
@@ -401,10 +287,7 @@
   <div id="user_details"></div>
 
   <!-- Firebase scripts -->
-  <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
   <script>
     // Initialize Firebase
     var config = {
@@ -422,6 +305,7 @@
     // });
   </script>
   <script defer src="js/dashboard.js"></script>
+  <script defer src="js/social.js"></script>
 </body>
 
 </html>
