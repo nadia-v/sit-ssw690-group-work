@@ -238,7 +238,7 @@ function initApp() {
                         db.collection('social_posts').add({
                             adTitle: social_form_movie.title.value,
                             adDescription: social_form_movie.description.value,
-                            adCategory: "Movie/Theater",
+                            adCategory: "Movie/Theatre",
                             adStatus: "active",
                             adDate: date,
                             editDate: date,
