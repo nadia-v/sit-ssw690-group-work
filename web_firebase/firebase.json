@@ -1,0 +1,35 @@
+{
+  "hosting": {
+    "public": "public",
+    "rewrites": [{
+        "source": "/",
+        "destination": "user-page.html"
+      },
+
+      {
+        "source": "/dashboard",
+        "destination": "dashboard.html"
+      },
+
+      {
+        "source": "/marketplace",
+        "destination": "marketplace.html"
+      },
+
+      {
+        "source": "/housing",
+        "destination": "housing.html"
+      },
+
+      {
+        "source": "/socialplace",
+        "destination": "socialplace.html"
+      }
+    ],
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
